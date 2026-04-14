@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App - Bu Wardono</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <header>
+                <div class="banner">
+                    <h1>Selamat Datang di Toko Bu Wardono</h1>
+                    <p>Food and Beverage Terbaik</p>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk..." id="search-input">
+                    <button id="search-btn">Cari</button>
+                </div>
+            </header>
+            <main>
+                <h2>Produk Terbaru</h2>
+                <div id="product-list" class="product-list">
+                    <!-- Products will be loaded here -->
+                </div>
+            </main>
+        </section>
+
+        <!-- Mitra Page -->
+        <section id="mitra" class="page">
+            <header>
+                <h1>Mitra Kami</h1>
+            </header>
+            <main>
+                <div id="mitra-list" class="mitra-list">
+                    <!-- Mitra will be loaded here -->
+                </div>
+            </main>
+        </section>
+
+        <!-- Produk Page -->
+        <section id="produk" class="page">
+            <header>
+                <h1>Produk</h1>
+                <div class="filter">
+                    <select id="category-filter">
+                        <option value="">Semua Kategori</option>
+                        <option value="FOOD">Food</option>
+                        <option value="BEVERAGE">Beverage</option>
+                    </select>
+                </div>
+            </header>
+            <main>
+                <div id="produk-grid" class="produk-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </main>
+        </section>
+
+        <!-- Akun Page -->
+        <section id="akun" class="page">
+            <header>
+                <h1>Akun</h1>
+            </header>
+            <main>
+                <div id="login-form" class="auth-form">
+                    <h2>Login</h2>
+                    <input type="email" placeholder="Email" id="login-email">
+                    <input type="password" placeholder="Password" id="login-password">
+                    <button id="login-btn">Login</button>
+                    <p>Belum punya akun? <a href="#" id="show-register">Daftar</a></p>
+                </div>
+                <div id="register-form" class="auth-form hidden">
+                    <h2>Register</h2>
+                    <input type="text" placeholder="Nama" id="register-name">
+                    <input type="email" placeholder="Email" id="register-email">
+                    <input type="password" placeholder="Password" id="register-password">
+                    <button id="register-btn">Daftar</button>
+                    <p>Sudah punya akun? <a href="#" id="show-login">Login</a></p>
+                </div>
+                <div id="profile" class="profile hidden">
+                    <h2>Profil</h2>
+                    <p>Nama: <span id="user-name"></span></p>
+                    <p>Email: <span id="user-email"></span></p>
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </main>
+        </section>
+
+        <!-- Detail Produk Modal -->
+        <div id="product-detail" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="detail-image" src="" alt="">
+                <h2 id="detail-name"></h2>
+                <p id="detail-price"></p>
+                <p id="detail-stock"></p>
+                <p id="detail-category"></p>
+            </div>
+        </div>
+
+        <!-- Detail Mitra Modal -->
+        <div id="mitra-detail" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="mitra-detail-name"></h2>
+                <p>Owner: <span id="mitra-owner"></span></p>
+                <p>Email: <span id="mitra-email"></span></p>
+                <p>Alamat: <span id="mitra-address"></span></p>
+                <p>Kategori: <span id="mitra-kategori"></span></p>
+                <p>Sekolah: <span id="mitra-sekolah"></span></p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" data-page="home">
+                <span class="icon">🏠</span>
+                <span class="label">Home</span>
+            </a>
+            <a href="#" class="nav-item" data-page="mitra">
+                <span class="icon">🤝</span>
+                <span class="label">Mitra</span>
+            </a>
+            <a href="#" class="nav-item" data-page="produk">
+                <span class="icon">🛒</span>
+                <span class="label">Produk</span>
+            </a>
+            <a href="#" class="nav-item" data-page="akun">
+                <span class="icon">👤</span>
+                <span class="label">Akun</span>
+            </a>
+        </nav>
+    </div>
+    <script src="JS/script.js"></script>
+</body>
+</html>

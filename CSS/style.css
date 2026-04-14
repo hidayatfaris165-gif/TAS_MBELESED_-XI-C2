@@ -1,0 +1,305 @@
+/* Mobile-first responsive design */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.app {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px; /* Space for bottom nav */
+}
+
+.page {
+    display: none;
+    padding: 20px;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Header */
+header {
+    margin-bottom: 20px;
+}
+
+.banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Product List */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-item {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.product-item:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 10px;
+    flex: 1;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.product-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Mitra List */
+.mitra-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mitra-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.mitra-item:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Produk Grid */
+.produk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.produk-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.produk-item:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.produk-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.produk-info {
+    padding: 10px;
+}
+
+.produk-info h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.produk-info p {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Filter */
+.filter {
+    margin-bottom: 20px;
+}
+
+.filter select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Auth Forms */
+.auth-form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.auth-form a {
+    color: #667eea;
+}
+
+/* Profile */
+.profile {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#detail-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #666;
+    font-size: 12px;
+    transition: color 0.3s;
+}
+
+.nav-item.active {
+    color: #667eea;
+}
+
+.nav-item .icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+/* Hidden class */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .app {
+        width: 100%;
+    }
+}
