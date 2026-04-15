@@ -8,16 +8,21 @@
 </head>
 <body>
     <div class="app">
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-toggle">
+            <button id="dark-mode-btn">🌙</button>
+        </div>
+
         <!-- Home Page -->
         <section id="home" class="page active">
             <header>
                 <div class="banner">
-                    <h1>Selamat Datang di Toko Bu Wardono</h1>
-                    <p>Food and Beverage Terbaik</p>
+                    <h1 class="animated-title">Selamat Datang di <span class="highlight">Toko Bu Wardono</span></h1>
+                    <p class="animated-subtitle">Food and Beverage Terbaik</p>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Cari produk..." id="search-input">
-                    <button id="search-btn">Cari</button>
+                    <button id="search-btn" class="ripple">Cari</button>
                 </div>
             </header>
             <main>
@@ -59,6 +64,31 @@
             </main>
         </section>
 
+        <!-- Favorit Page -->
+        <section id="favorit" class="page">
+            <header>
+                <h1>Favorit</h1>
+            </header>
+            <main>
+                <div id="favorit-list" class="favorit-list">
+                    <!-- Favorit products will be loaded here -->
+                </div>
+            </main>
+        </section>
+
+        <!-- Keranjang Page -->
+        <section id="keranjang" class="page">
+            <header>
+                <h1>Keranjang</h1>
+            </header>
+            <main>
+                <div id="keranjang-list" class="keranjang-list">
+                    <!-- Keranjang items will be loaded here -->
+                </div>
+                <button id="checkout-btn" class="checkout-btn ripple">Checkout</button>
+            </main>
+        </section>
+
         <!-- Akun Page -->
         <section id="akun" class="page">
             <header>
@@ -69,7 +99,7 @@
                     <h2>Login</h2>
                     <input type="email" placeholder="Email" id="login-email">
                     <input type="password" placeholder="Password" id="login-password">
-                    <button id="login-btn">Login</button>
+                    <button id="login-btn" class="ripple">Login</button>
                     <p>Belum punya akun? <a href="#" id="show-register">Daftar</a></p>
                 </div>
                 <div id="register-form" class="auth-form hidden">
@@ -77,14 +107,14 @@
                     <input type="text" placeholder="Nama" id="register-name">
                     <input type="email" placeholder="Email" id="register-email">
                     <input type="password" placeholder="Password" id="register-password">
-                    <button id="register-btn">Daftar</button>
+                    <button id="register-btn" class="ripple">Daftar</button>
                     <p>Sudah punya akun? <a href="#" id="show-login">Login</a></p>
                 </div>
                 <div id="profile" class="profile hidden">
                     <h2>Profil</h2>
                     <p>Nama: <span id="user-name"></span></p>
                     <p>Email: <span id="user-email"></span></p>
-                    <button id="logout-btn">Logout</button>
+                    <button id="logout-btn" class="ripple">Logout</button>
                 </div>
             </main>
         </section>
@@ -98,6 +128,8 @@
                 <p id="detail-price"></p>
                 <p id="detail-stock"></p>
                 <p id="detail-category"></p>
+                <button id="add-to-cart-detail" class="add-to-cart-btn ripple">Tambah ke Keranjang</button>
+                <button id="favorite-detail" class="favorite-btn ripple">❤️ Favorit</button>
             </div>
         </div>
 
@@ -114,25 +146,15 @@
             </div>
         </div>
 
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav">
-            <a href="#" class="nav-item active" data-page="home">
-                <span class="icon">🏠</span>
-                <span class="label">Home</span>
-            </a>
-            <a href="#" class="nav-item" data-page="mitra">
-                <span class="icon">🤝</span>
-                <span class="label">Mitra</span>
-            </a>
-            <a href="#" class="nav-item" data-page="produk">
-                <span class="icon">🛒</span>
-                <span class="label">Produk</span>
-            </a>
-            <a href="#" class="nav-item" data-page="akun">
-                <span class="icon">👤</span>
-                <span class="label">Akun</span>
-            </a>
-        </nav>
+        <!-- Debug Panel (hidden by default) -->
+        <div id="debug-panel" class="debug-panel hidden">
+            <h3>Debug Information</h3>
+            <div id="debug-content"></div>
+            <button onclick="document.getElementById('debug-panel').classList.add('hidden')">Close Debug</button>
+        </div>
+
+        <!-- Debug Toggle Button -->
+        <button id="debug-toggle" class="debug-toggle" onclick="toggleDebugPanel()">🐛</button>
     </div>
     <script src="JS/script.js"></script>
 </body>
