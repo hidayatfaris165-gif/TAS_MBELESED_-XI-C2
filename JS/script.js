@@ -158,6 +158,8 @@ function handleImageError(img) {
 
     // If all Google Drive formats failed, use placeholder
     img.src = 'https://via.placeholder.com/300x300?text=Gambar+Tidak+Tersedia';
+    updateDebugInfo(`Using placeholder for failed image: ${originalSrc}`);
+    return;
     img.onerror = null; // Prevent infinite loop
     updateDebugInfo('Using placeholder for failed image');
 }
