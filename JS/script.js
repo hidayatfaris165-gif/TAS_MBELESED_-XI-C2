@@ -64,16 +64,16 @@ function convertGoogleDriveUrl(url) {
         return 'https://via.placeholder.com/300x300?text=No+Image';
     }
 
+    // If it's already a direct image link, return as is
+    if (url.includes('lh3.googleusercontent.com/d/')) {
+        updateDebugInfo('URL is already a direct link, using as is');
+        return url;
+    }
+
     updateDebugInfo(`Converting URL: ${url.substring(0, 50)}...`);
 
     // Handle different Google Drive URL formats
-    if (url.includes('lh3.googleusercontent.com/d/')) {
-        // Format: https://lh3.googleusercontent.com/d/{fileId}
-        const fileId = url.split('/d/')[1].split('?')[0]; // Remove query parameters
-        const newUrl = `https://drive.google.com/uc?id=${fileId}`;
-        updateDebugInfo(`Converted to: ${newUrl}`);
-        return newUrl;
-    } else if (url.includes('drive.google.com/file/d/')) {
+    if (url.includes('drive.google.com/file/d/')) {
         // Format: https://drive.google.com/file/d/{fileId}/view
         const fileId = url.split('/file/d/')[1].split('/')[0];
         const newUrl = `https://drive.google.com/uc?id=${fileId}`;
@@ -148,9 +148,15 @@ function handleImageError(img) {
 
     // Try alternative URL format if current one failed
     const originalSrc = img.src;
-    if (originalSrc.includes('drive.google.com/uc?id=')) {
+    if (originalSrc.includes('lh3.googleusercontent.com/d/')) {
+        // Try Google Drive uc format
+        const fileId = originalSrc.split('/d/')[1].split('?')[0];
+        img.src = `https://drive.google.com/uc?id=${fileId}`;
+        updateDebugInfo(`Trying Google Drive format: ${img.src}`);
+        return;
+    } else if (originalSrc.includes('drive.google.com/uc?id=')) {
         // Try with export=view parameter
-        const fileId = originalSrc.split('id=')[1];
+        const fileId = originalSrc.split('id=')[1].split('&')[0];
         img.src = `https://drive.google.com/uc?export=view&id=${fileId}`;
         updateDebugInfo(`Trying alternative format: ${img.src}`);
         return;
@@ -158,10 +164,8 @@ function handleImageError(img) {
 
     // If all Google Drive formats failed, use placeholder
     img.src = 'https://via.placeholder.com/300x300?text=Gambar+Tidak+Tersedia';
-    updateDebugInfo(`Using placeholder for failed image: ${originalSrc}`);
-    return;
     img.onerror = null; // Prevent infinite loop
-    updateDebugInfo('Using placeholder for failed image');
+    updateDebugInfo(`Using placeholder for failed image: ${originalSrc}`);
 }
 
 // Load mitra from JSON
